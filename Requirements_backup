@@ -51,22 +51,17 @@ AI 接口： 异步调用外部 API，需处理网络超时情况。
 管理端鉴权： 管理员账号需有独立的权限标识（Role-based Access Control）。
 数据脱敏： 管理员删除账号时，需级联删除对应的历史饮食图片，保护隐私。
 6. 数据库初步设计 (Database Schema)
-User（用户信息表）（ID, Username, passport, photo, background, Introduction）
-  说明：主键为 ID；Username 唯一不可重复；所有字段除 ID、Username、passport 外，均可为空
-  关联关系：作为主表，与 BodyData、Event、FoodRecord 建立关联
-BodyData（用户身体数据表）（BodyID, UserID, Gender, Height, Weight, BodyFatRate）
-  说明：主键为 BodyID；UserID 唯一不可重复（实现与 User 一对一关联）
-  关联关系：UserID → User.ID（外键，一对一）
-Event（用户事件记录表）（EventID, UserID, EventRecord, EventTime, Remarks）
-  说明：主键为 EventID
-  关联关系：UserID → User.ID（外键，多对一，一个用户对应多条事件记录）
-FoodDict（食物热量基础字典表）（FoodID, FoodName, Calorie）
-  说明：主键为 FoodID；FoodName 唯一不可重复；无外键关联，存储固定食物信息
-FoodRecord（用户食物摄入记录表）（RecordID, UserID, FoodID, IntakeTime，IntakeAmount）
-  说明：主键为 RecordID；IntakeAmount 默认值 1.00
-  关联关系：UserID → User.ID（外键，多对一，一个用户对应多条摄入记录）
-          FoodID → FoodDict.FoodID（外键，多对一，一种食物对应多条摄入记录）
-  User ↔ BodyData：一对一（User.ID ↔ BodyData.UserID）
-  User → Event：一对多（User.ID → Event.UserID）
-  User → FoodRecord：一对多（User.ID → FoodRecord.UserID）
-  FoodDict → FoodRecord：一对多（FoodDict.FoodID → FoodRecord.FoodID）
+普通用户需求：
+1.方便打开使用，手机可使用
+2.使用可记录自己历史信息，并且可查看
+3.每次记录后自动计算今日冗余和缺口（+为冗余-为缺口）
+4.可以统计自己一个月的总体冗余或缺口
+5.可更改名称、背景、简介。
+6.进入当前数据可选择AI识图并且给出大概估算重量自动填写在估算中（并且可用户更改）
+7.设置目标可只设置体重，也可以额外设置体脂率，到达目标后给出弹窗提示
+8.上传自己的数据库里没有的食物或者自定义食物
+
+管理员需求：
+1.可以审核用户上传的食物申请
+2.可更改食物数据库里的东西
+3.可以删除用户或者更改用户的名称（违规名称）
