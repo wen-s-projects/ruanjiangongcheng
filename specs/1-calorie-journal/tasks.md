@@ -32,6 +32,7 @@ Purpose: DB schema, auth, logging, monitoring
 - [ ] T007 (1.0d) 实现 Auth（JWT + Refresh Token），基础 User registration/login endpoints
 - [ ] T008 (1.0d) 集成基础日志（pino）与错误追踪（Sentry）配置
 - [ ] T009 (0.5d) Redis 容器配置（缓存与短时队列）
+  - [ ] T009-a (0.5d) Redis 初始化验收：Docker Compose / K8s manifest、连接测试、故障恢复演练与监控指标（hit/miss、keys、TTL）
 - [ ] T010 (0.5d) 制定 DB 迁移与回滚策略文档
 
 Checkpoint: Foundational 完成后可并行实现文章与图片子系统
@@ -75,7 +76,18 @@ Purpose: 高效查询与搜索体验
 - [ ] T023 (1.0d) 实现文章列表分页与 tag 过滤（DB 索引调优）
 - [ ] T024 (2.0d) 为全文搜索接入 MeiliSearch（或 Elastic）并实现同步策略（事件驱动或定时批量）
 - [ ] T025 (0.5d) 添加缓存层（Redis）用于热点列表/标签结果缓存与失效策略
+  - [ ] T025-a (0.5d) 缓存行为验证：命中率测试、TTL/失效验证、并发压力下缓存一致性测试
 - [ ] T026 (0.5d) 添加监控与性能基线脚本（加载测试脚本）
+
+---
+
+## Performance & SLA Verification (NEW)
+
+- [ ] T037 (1.0d) 负载测试（k6）— 模拟 100 并发读取（tag & list 查询），断言 P95 响应时间 < 1s；包含脚本、CI 集成与结果阈值文档
+- [ ] T038 (1.0d) 首屏渲染测量（Lighthouse / Puppeteer）— 自动化测量 P90 首屏时间 < 2s，在 CI 中生成报告并保存基线
+- [ ] T039 (0.5d) 新文章可见性一致性测试— 测试文章发布后索引/缓存同步，断言 95% 的请求在 5s 内能返回已发布文章
+- [ ] T040 (1.0d) 草稿自动保存与恢复实现与 E2E 测试（本地保存 + 服务端草稿 API，断言内容恢复可靠）
+- [ ] T041 (0.5d) 缩略图 SLA 验证— 验证上传后 60s 内缩略图生成并可用；包含失败重试策略与监控告警规则
 
 ---
 
