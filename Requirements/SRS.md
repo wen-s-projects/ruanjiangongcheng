@@ -56,8 +56,8 @@ AI 接口： 异步调用外部 API，需处理网络超时情况。
 数据脱敏： 管理员删除账号时，需级联删除对应的历史饮食图片，保护隐私。
 6. 数据库初步设计 (Database Schema)
 Admin
-- AdminID          （主键，建议自增，如INT类型）
-- AdminPassport    （非空，唯一，避免重复用户名）
+- AdminName          （主键，建议自增，如INT类型）
+- AdminPassword    （非空，唯一，避免重复用户名）
 
 User（用户信息表）
 - ID          （主键，建议自增，如INT类型）
