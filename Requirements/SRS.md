@@ -55,46 +55,19 @@ AI 接口： 异步调用外部 API，需处理网络超时情况。
 管理端鉴权： 管理员账号需有独立的权限标识（Role-based Access Control）。
 数据脱敏： 管理员删除账号时，需级联删除对应的历史饮食图片，保护隐私。
 6. 数据库初步设计 (Database Schema)
-Admin
-- AdminName          （主键，建议自增，如INT类型）
-- AdminPassword    （非空，唯一，避免重复用户名）
-
-User（用户信息表）
-- ID          （主键，建议自增，如INT类型）
-- Username    （非空，唯一，避免重复用户名）
-- Passport    （备注：存储用户登录凭证（加密后存储，如密码哈希值），修正命名首字母大写保持一致性）
-- Photo       （存储用户头像路径/URL，允许为空）
-- Background  （存储用户背景图路径/URL，允许为空）
-- Introduction（用户个人简介，文本类型，允许为空）
-
-BodyData（用户身体数据表）
-- BodyID      （主键，建议自增）
-- UserID      （外键，关联User表的ID，非空，确保绑定对应用户）
-- Gender      （性别，如字符型/数字型，备注：男/女/未知）
-- Age         （年龄，约束：BETWEEN 1 AND 100，修正原始合理范围的表述）
-- Height      （身高，单位：厘米，约束：BETWEEN 30.0 AND 250.0 ，保留字段名）
-- Weight      （体重，单位：千克，约束：BETWEEN 5.0 AND 300.0，保留原始范围）
-- FatRate      （体脂率，约束：BETWEEN 0.0 AND 100.0，明确百分比范围）
-- BMI         （身体质量指数，可实时计算也可存储，备注：BMI=体重(kg)/身高(m)²）
-- BasicActivityLevel  （基础活动量，备注：对应活动系数分类（如1-久坐、2-轻度等））
-- BasalMetabolicRate    （基础代谢，单位：大卡(kcal)，为基础代谢率计算值）
-
-Event（用户饮食总表）
-- EventID     （主键，建议自增）
-- UserID      （外键，关联User表的ID，非空，绑定对应用户）
-- EventRecord （饮食总记录内容，备注：如当日饮食总热量/饮食总结等，匹配“饮食总表”用途）
-- EventTime   （记录时间，非空，建议默认当前时间，便于追溯）
-- Remarks     （饮食备注，如“当日饮食偏油腻”等，允许为空）
-
-FoodDict（食物热量基础字典表）
-- FoodID      （主键，建议自增）
-- FoodName    （食物名称，非空，唯一，避免重复录入同一种食物）
-- Calorie     （热量，备注：单位：大卡(kcal)/100克，明确热量统计标准）
-
-FoodRecord（用户食物摄入记录表（当日））
-- RecordID  INT PRIMARY KEY AUTO_INCREMENT  -- 主键，自增，唯一标识每一条食物摄入记录
-- UserID （关联User表的主键（ID），绑定对应用户）
-- FoodID （外键，关联FoodDict表的主键（FoodID），绑定对应食物）
-- IntakeTime （摄入时间，默认当前时间，便于筛选当日数据）
-- MealType      （餐次类型：1-早餐/2-午餐/3-晚餐/4-加餐' ）
-- IntakeAmount  （摄入量，单位：克（g））
+本数据库包含6张核心数据表，覆盖管理员管理、用户信息、身体指标、饮食记录、食物字典等业务，通过外键关联保证数据一致性，支撑用户健康数据追踪与饮食热量统计功能。
+Admin（管理员表）
+存储管理员登录信息，AdminName 为主键，AdminPassword 非空唯一，保障系统后台登录安全。
+User（用户表）
+存储用户基础信息，ID 为主键，关联其他所有业务表；Username 非空唯一，Passport 存储加密登录凭证，同时包含头像、简介等个性化字段。
+BodyData（身体数据表）
+记录用户身体指标，BodyID 为主键，UserID 关联用户表；涵盖年龄、身高、体重、体脂率等核心指标，支持 BMI 与基础代谢率计算。
+Event（饮食总表）
+汇总用户每日饮食情况，EventID 为主键，UserID 关联用户表；记录饮食总结、记录时间及备注，用于整体饮食情况追溯。
+FoodDict（食物字典表）
+存储食物标准热量数据，FoodID 为主键，FoodName 非空唯一；Calorie 记录每 100 克食物热量，作为饮食热量计算依据。
+FoodRecord（食物摄入表）
+记录用户每次食物摄入详情，RecordID 为主键，UserID关联用户表、FoodID关联食物字典表；包含摄入时间、餐次类型、摄入量，支撑饮食总热量统计。
+表关联关系：
+User 表与 BodyData、Event、FoodRecord 为一对多关联；
+FoodDict 表与 FoodRecord 为一对多关联。
