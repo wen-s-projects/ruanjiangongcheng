@@ -1,0 +1,144 @@
+-- Initial migration for Calorie Journal feature (camelCase names)
+
+CREATE DATABASE IF NOT EXISTS CalorieSystem DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+USE CalorieSystem;
+
+-- Admin
+CREATE TABLE Admin (
+  adminId INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  passport VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- User
+CREATE TABLE User (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  passport VARCHAR(255) NOT NULL,
+  photo VARCHAR(255) NULL,
+  background VARCHAR(255) NULL,
+  introduction TEXT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- BodyData
+CREATE TABLE BodyData (
+  bodyId INT PRIMARY KEY AUTO_INCREMENT,
+  userId INT NOT NULL UNIQUE,
+  gender TINYINT NULL,
+  age TINYINT NOT NULL,
+  height DECIMAL(5,1) NOT NULL,
+  weight DECIMAL(5,1) NOT NULL,
+  fatRate DECIMAL(4,1) NOT NULL,
+  bmi DECIMAL(4,1) NULL,
+  basicActivityLevel TINYINT NULL,
+  basalMetabolicRate DECIMAL(6,1) NULL,
+  FOREIGN KEY (userId) REFERENCES User(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Event
+CREATE TABLE Event (
+  eventId INT PRIMARY KEY AUTO_INCREMENT,
+  userId INT NOT NULL,
+  eventRecord VARCHAR(500) NOT NULL,
+  eventTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  remarks VARCHAR(200) NULL,
+  FOREIGN KEY (userId) REFERENCES User(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- FoodDict
+CREATE TABLE FoodDict (
+  foodId INT PRIMARY KEY AUTO_INCREMENT,
+  foodName VARCHAR(100) NOT NULL UNIQUE,
+  calorie DECIMAL(6,1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- FoodRecord
+CREATE TABLE FoodRecord (
+  recordId INT PRIMARY KEY AUTO_INCREMENT,
+  userId INT NOT NULL,
+  foodId INT NOT NULL,
+  intakeTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  mealType TINYINT NOT NULL,
+  intakeAmount DECIMAL(6,1) NOT NULL,
+  FOREIGN KEY (userId) REFERENCES User(id),
+  FOREIGN KEY (foodId) REFERENCES FoodDict(foodId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Article
+CREATE TABLE Article (
+  articleId INT PRIMARY KEY AUTO_INCREMENT,
+  authorId INT NOT NULL,
+  title VARCHAR(200) NOT NULL,
+  slug VARCHAR(255) NOT NULL UNIQUE,
+  markdown LONGTEXT NOT NULL,
+  renderedHtml LONGTEXT NOT NULL,
+  status ENUM('draft','published','deleted') NOT NULL DEFAULT 'draft',
+  allowComments TINYINT(1) NOT NULL DEFAULT 1,
+  createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (authorId) REFERENCES User(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tag
+CREATE TABLE Tag (
+  tagId INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL UNIQUE,
+  slug VARCHAR(80) NOT NULL UNIQUE,
+  count INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ArticleTag
+CREATE TABLE ArticleTag (
+  articleId INT NOT NULL,
+  tagId INT NOT NULL,
+  PRIMARY KEY (articleId, tagId),
+  FOREIGN KEY (articleId) REFERENCES Article(articleId),
+  FOREIGN KEY (tagId) REFERENCES Tag(tagId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Comment
+CREATE TABLE Comment (
+  commentId INT PRIMARY KEY AUTO_INCREMENT,
+  articleId INT NOT NULL,
+  authorId INT NULL,
+  content TEXT NOT NULL,
+  status ENUM('active','hidden') NOT NULL DEFAULT 'active',
+  createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (articleId) REFERENCES Article(articleId),
+  FOREIGN KEY (authorId) REFERENCES User(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ArticleImage
+CREATE TABLE ArticleImage (
+  imageId INT PRIMARY KEY AUTO_INCREMENT,
+  articleId INT NOT NULL,
+  url VARCHAR(255) NOT NULL,
+  thumbUrl VARCHAR(255) NULL,
+  width INT NULL,
+  height INT NULL,
+  createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (articleId) REFERENCES Article(articleId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ArticleFoodRef
+CREATE TABLE ArticleFoodRef (
+  refId INT PRIMARY KEY AUTO_INCREMENT,
+  articleId INT NOT NULL,
+  foodId INT NULL,
+  foodRecordId INT NULL,
+  note VARCHAR(255) NULL,
+  FOREIGN KEY (articleId) REFERENCES Article(articleId),
+  FOREIGN KEY (foodId) REFERENCES FoodDict(foodId),
+  FOREIGN KEY (foodRecordId) REFERENCES FoodRecord(recordId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- AuditLog
+CREATE TABLE AuditLog (
+  logId INT PRIMARY KEY AUTO_INCREMENT,
+  entityType VARCHAR(50) NOT NULL,
+  entityId INT NOT NULL,
+  action VARCHAR(50) NOT NULL,
+  actorId INT NULL,
+  data JSON NULL,
+  createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
