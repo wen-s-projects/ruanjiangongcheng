@@ -1,14 +1,14 @@
-const express = require('express');
+import * as express from 'express';
 const router = express.Router();
-const unified = require('unified');
-const remarkParse = require('remark-parse');
-const remarkRehype = require('remark-rehype');
-const rehypeStringify = require('rehype-stringify');
-const rehypeSanitize = require('rehype-sanitize');
-
-router.use(async (req, res) => {
+router.use(async (req: any, res: any) => {
   try {
     const markdown = req.body.markdown || '';
+    const unifiedModule = await import('unified');
+    const remarkParse = (await import('remark-parse')).default || (await import('remark-parse'));
+    const remarkRehype = (await import('remark-rehype')).default || (await import('remark-rehype'));
+    const rehypeSanitize = (await import('rehype-sanitize')).default || (await import('rehype-sanitize'));
+    const rehypeStringify = (await import('rehype-stringify')).default || (await import('rehype-stringify'));
+    const unified: any = unifiedModule.default || unifiedModule;
     const file = await unified()
       .use(remarkParse)
       .use(remarkRehype)
