@@ -7,7 +7,8 @@
     "build": "tsc -p tsconfig.build.json",
     "start:prod": "node dist/main.js",
     "lint": "eslint . --ext .ts",
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "echo \"No tests yet\" && exit 0",
+    "test:upload": "ts-node -r tsconfig-paths/register scripts/integration_upload_test.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.962.0",
