@@ -1,0 +1,35 @@
+name: Upload POC CI
+
+on:
+  pull_request:
+    branches: [ 'poc/upload-local-s3', 'main' ]
+  push:
+    branches: [ 'poc/upload-local-s3' ]
+
+jobs:
+  upload-poc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Cache backend node modules
+        uses: actions/cache@v4
+        with:
+          path: backend/node_modules
+          key: ${{ runner.os }}-backend-node-${{ hashFiles('backend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-backend-node-
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Run upload integration test
+        working-directory: backend
+        run: npm run test:upload
