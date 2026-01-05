@@ -1,0 +1,167 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Models use camelCase column names and follow project DB design
+
+enum ArticleStatus {
+  draft
+  published
+  deleted
+}
+
+model Admin {
+  adminId  Int    @id @default(autoincrement())
+  username String @unique
+  passport String
+  @@map("Admin")
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  username    String    @unique
+  passport    String
+  photo       String?   
+  background  String?
+  introduction String?
+  bodyData    BodyData?
+  events      Event[]
+  foodRecords FoodRecord[]
+  articles    Article[] @relation("AuthorArticles")
+  comments    Comment[]
+  @@map("User")
+}
+
+model BodyData {
+  bodyId             Int      @id @default(autoincrement())
+  userId             Int      @unique
+  gender             Int?
+  age                Int
+  height             Float
+  weight             Float
+  fatRate            Float
+  bmi                Float?
+  basicActivityLevel Int?
+  basalMetabolicRate Float?
+  user               User     @relation(fields: [userId], references: [id])
+  @@map("BodyData")
+}
+
+model Event {
+  eventId   Int      @id @default(autoincrement())
+  userId    Int
+  eventRecord String
+  eventTime DateTime @default(now())
+  remarks   String?
+  user      User     @relation(fields: [userId], references: [id])
+  @@map("Event")
+}
+
+model FoodDict {
+  foodId  Int     @id @default(autoincrement())
+  foodName String @unique
+  calorie  Float
+  foodRecords FoodRecord[]
+  @@map("FoodDict")
+}
+
+model FoodRecord {
+  recordId    Int    @id @default(autoincrement())
+  userId      Int
+  foodId      Int
+  intakeTime  DateTime @default(now())
+  mealType    Int
+  intakeAmount Float
+  user        User     @relation(fields: [userId], references: [id])
+  food        FoodDict @relation(fields: [foodId], references: [foodId])
+  @@map("FoodRecord")
+}
+
+model Article {
+  articleId    Int            @id @default(autoincrement())
+  authorId     Int
+  title        String
+  slug         String         @unique
+  markdown     String
+  renderedHtml String
+  status       ArticleStatus  @default(draft)
+  allowComments Boolean       @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  author       User           @relation("AuthorArticles", fields: [authorId], references: [id])
+  tags         ArticleTag[]
+  comments     Comment[]
+  images       ArticleImage[]
+  foodRefs     ArticleFoodRef[]
+  @@map("Article")
+}
+
+model Tag {
+  tagId Int    @id @default(autoincrement())
+  name  String @unique
+  slug  String @unique
+  count Int    @default(0)
+  articles ArticleTag[]
+  @@map("Tag")
+}
+
+model ArticleTag {
+  articleId Int
+  tagId     Int
+  article   Article @relation(fields: [articleId], references: [articleId])
+  tag       Tag     @relation(fields: [tagId], references: [tagId])
+  @@id([articleId, tagId])
+  @@map("ArticleTag")
+}
+
+model Comment {
+  commentId Int      @id @default(autoincrement())
+  articleId Int
+  authorId  Int?
+  content   String
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  article   Article  @relation(fields: [articleId], references: [articleId])
+  author    User?    @relation(fields: [authorId], references: [id])
+  @@map("Comment")
+}
+
+model ArticleImage {
+  imageId  Int      @id @default(autoincrement())
+  articleId Int
+  url      String
+  thumbUrl String?
+  width    Int?
+  height   Int?
+  createdAt DateTime @default(now())
+  article  Article   @relation(fields: [articleId], references: [articleId])
+  @@map("ArticleImage")
+}
+
+model ArticleFoodRef {
+  refId       Int    @id @default(autoincrement())
+  articleId   Int
+  foodId      Int?
+  foodRecordId Int?
+  note        String?
+  article     Article @relation(fields: [articleId], references: [articleId])
+  food        FoodDict? @relation(fields: [foodId], references: [foodId])
+  foodRecord  FoodRecord? @relation(fields: [foodRecordId], references: [recordId])
+  @@map("ArticleFoodRef")
+}
+
+model AuditLog {
+  logId      Int      @id @default(autoincrement())
+  entityType String
+  entityId   Int
+  action     String
+  actorId    Int?
+  data       Json?
+  createdAt  DateTime @default(now())
+  @@map("AuditLog")
+}
