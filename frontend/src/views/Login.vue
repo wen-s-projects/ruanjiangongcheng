@@ -57,7 +57,7 @@ async function handleLogin() {
   
   loading.value = true
   try {
-    const success = await authStore.login(form.username, form.password)
+    const success = await authStore.login(form.value.username, form.value.password)
     if (success) {
       ElMessage.success('登录成功')
       router.push('/dashboard')

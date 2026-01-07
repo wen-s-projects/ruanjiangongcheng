@@ -46,14 +46,14 @@ const authStore = useAuthStore()
 const formRef = ref()
 const loading = ref(false)
 
-const form = reactive({
+const form = ref({
   username: '',
   password: '',
   confirmPassword: '',
 })
 
 const validateConfirmPassword = (rule: any, value: any, callback: any) => {
-  if (value !== form.password) {
+  if (value !== form.value.password) {
     callback(new Error('两次输入的密码不一致'))
   } else {
     callback()
@@ -80,8 +80,8 @@ async function handleRegister() {
   
   loading.value = true
   try {
-    console.log('Attempting to register with username:', form.username)
-    const success = await authStore.register(form.username, form.password)
+    console.log('Attempting to register with username:', form.value.username)
+    const success = await authStore.register(form.value.username, form.value.password)
     console.log('Register result:', success)
     if (success) {
       ElMessage.success('注册成功')

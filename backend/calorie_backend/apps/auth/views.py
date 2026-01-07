@@ -55,6 +55,10 @@ def register(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login(request):
+    print(f"DEBUG: Request data: {request.data}")
+    print(f"DEBUG: Request content type: {request.content_type}")
+    print(f"DEBUG: Request body: {request.body}")
+    
     serializer = LoginSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.validated_data['user']
@@ -65,7 +69,7 @@ def login(request):
                 'username': user.username,
             },
             'tokens': tokens
-        })
+        }, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

@@ -782,3 +782,200 @@ INFO 2026-01-07 11:01:00,591 autoreload 37104 11220 Watching for file changes wi
 INFO 2026-01-07 11:01:24,338 autoreload 34052 21632 Watching for file changes with StatReloader
 INFO 2026-01-07 11:02:07,307 log 33968 896 "POST /api/auth/login/ HTTP/1.1" 200 393
 INFO 2026-01-07 11:03:13,737 autoreload 21176 28488 Watching for file changes with StatReloader
+INFO 2026-01-07 11:32:07,565 autoreload 21176 28488 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py changed, reloading.
+INFO 2026-01-07 11:32:07,584 autoreload 14288 28480 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py changed, reloading.
+INFO 2026-01-07 11:32:07,623 autoreload 34052 21632 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py changed, reloading.
+INFO 2026-01-07 11:32:07,636 autoreload 33968 15324 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py changed, reloading.
+INFO 2026-01-07 11:32:08,496 autoreload 21796 25560 Watching for file changes with StatReloader
+INFO 2026-01-07 11:32:08,498 autoreload 9496 21716 Watching for file changes with StatReloader
+INFO 2026-01-07 11:32:08,538 autoreload 28544 28688 Watching for file changes with StatReloader
+INFO 2026-01-07 11:32:08,548 autoreload 22516 31936 Watching for file changes with StatReloader
+INFO 2026-01-07 11:33:34,989 autoreload 18000 5292 Watching for file changes with StatReloader
+INFO 2026-01-07 11:34:22,870 autoreload 25040 15596 Watching for file changes with StatReloader
+INFO 2026-01-07 11:35:03,941 autoreload 18780 23272 Watching for file changes with StatReloader
+INFO 2026-01-07 13:15:00,999 autoreload 15944 20832 Watching for file changes with StatReloader
+INFO 2026-01-07 13:23:57,235 autoreload 31084 15880 Watching for file changes with StatReloader
+INFO 2026-01-07 13:30:34,823 autoreload 34868 24968 Watching for file changes with StatReloader
+INFO 2026-01-07 13:31:25,702 autoreload 34868 24968 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py changed, reloading.
+INFO 2026-01-07 13:31:25,734 autoreload 31084 15880 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py changed, reloading.
+INFO 2026-01-07 13:31:26,274 autoreload 15944 20832 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py changed, reloading.
+INFO 2026-01-07 13:31:26,491 autoreload 33904 36172 Watching for file changes with StatReloader
+INFO 2026-01-07 13:31:26,533 autoreload 35236 10872 Watching for file changes with StatReloader
+INFO 2026-01-07 13:31:27,056 autoreload 6776 21252 Watching for file changes with StatReloader
+INFO 2026-01-07 13:31:34,897 autoreload 13028 1980 Watching for file changes with StatReloader
+INFO 2026-01-07 13:31:45,124 autoreload 24116 21188 Watching for file changes with StatReloader
+INFO 2026-01-07 13:35:36,598 autoreload 16788 25292 Watching for file changes with StatReloader
+INFO 2026-01-07 13:35:57,089 autoreload 23988 36108 Watching for file changes with StatReloader
+INFO 2026-01-07 13:37:12,964 autoreload 27664 17824 Watching for file changes with StatReloader
+ERROR 2026-01-07 13:40:59,301 log 35236 14052 Internal Server Error: /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 60, in login
+    print(f"DEBUG: Request body: {request.body}")
+                                  ^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\http\request.py", line 383, in body
+    raise RawPostDataException(
+django.http.request.RawPostDataException: You cannot access body after reading from request's data stream
+ERROR 2026-01-07 13:40:59,308 log 35236 14052 "POST /api/auth/login/ HTTP/1.1" 500 111604
+ERROR 2026-01-07 13:41:26,120 log 35236 13128 Internal Server Error: /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 60, in login
+    print(f"DEBUG: Request body: {request.body}")
+                                  ^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\http\request.py", line 383, in body
+    raise RawPostDataException(
+django.http.request.RawPostDataException: You cannot access body after reading from request's data stream
+ERROR 2026-01-07 13:41:26,123 log 35236 13128 "POST /api/auth/login/ HTTP/1.1" 500 111604
+ERROR 2026-01-07 13:42:39,764 log 35236 2296 Internal Server Error: /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 60, in login
+    print(f"DEBUG: Request body: {request.body}")
+                                  ^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\http\request.py", line 383, in body
+    raise RawPostDataException(
+django.http.request.RawPostDataException: You cannot access body after reading from request's data stream
+ERROR 2026-01-07 13:42:39,765 log 35236 2296 "POST /api/auth/login/ HTTP/1.1" 500 111604
+INFO 2026-01-07 13:53:41,070 autoreload 22520 20944 Watching for file changes with StatReloader
+INFO 2026-01-07 13:53:49,702 log 35236 19060 "GET /?ide_webview_request_time=1767765229377 HTTP/1.1" 200 290
+WARNING 2026-01-07 13:53:49,808 log 35236 19060 Not Found: /@vite/client
+WARNING 2026-01-07 13:53:49,809 log 35236 19060 "GET /@vite/client HTTP/1.1" 404 3614
+INFO 2026-01-07 13:54:02,333 autoreload 14360 4284 Watching for file changes with StatReloader
+INFO 2026-01-07 13:54:52,932 autoreload 9868 16516 Watching for file changes with StatReloader
+INFO 2026-01-07 13:55:23,827 autoreload 34156 25000 Watching for file changes with StatReloader
+INFO 2026-01-07 14:03:46,234 autoreload 18136 31108 Watching for file changes with StatReloader
+INFO 2026-01-07 14:03:58,072 autoreload 15352 23320 Watching for file changes with StatReloader
+INFO 2026-01-07 14:04:29,808 autoreload 304 15172 Watching for file changes with StatReloader
+ERROR 2026-01-07 14:12:19,193 log 34156 9792 Internal Server Error: /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 60, in login
+    print(f"DEBUG: Request body: {request.body}")
+                                  ^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\rest_framework\request.py", line 422, in __getattr__
+    return getattr(_request, attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wxxoxxw\anaconda3\Lib\site-packages\django\http\request.py", line 383, in body
+    raise RawPostDataException(
+django.http.request.RawPostDataException: You cannot access body after reading from request's data stream
+ERROR 2026-01-07 14:12:19,198 log 34156 9792 "POST /api/auth/login/ HTTP/1.1" 500 111604
+INFO 2026-01-07 14:12:58,636 autoreload 7816 20604 Watching for file changes with StatReloader
+INFO 2026-01-07 14:13:58,780 autoreload 4996 32040 Watching for file changes with StatReloader
+INFO 2026-01-07 14:14:23,360 autoreload 34592 37576 Watching for file changes with StatReloader
+INFO 2026-01-07 14:14:36,439 autoreload 12172 6568 Watching for file changes with StatReloader
+INFO 2026-01-07 14:25:30,958 autoreload 19604 28916 Watching for file changes with StatReloader
+INFO 2026-01-07 14:26:10,667 autoreload 18988 23768 Watching for file changes with StatReloader
+INFO 2026-01-07 14:26:51,408 autoreload 13496 17172 Watching for file changes with StatReloader
+INFO 2026-01-07 14:29:47,002 autoreload 17536 18272 Watching for file changes with StatReloader
+INFO 2026-01-07 14:33:26,612 autoreload 36408 6064 Watching for file changes with StatReloader
+INFO 2026-01-07 14:34:10,035 autoreload 13860 29248 Watching for file changes with StatReloader
+INFO 2026-01-07 14:36:25,064 autoreload 8472 8760 Watching for file changes with StatReloader
+INFO 2026-01-07 14:37:14,350 autoreload 36396 12900 Watching for file changes with StatReloader
+INFO 2026-01-07 14:41:36,286 autoreload 5996 2852 Watching for file changes with StatReloader
+INFO 2026-01-07 14:44:56,312 autoreload 26176 32072 Watching for file changes with StatReloader
