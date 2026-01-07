@@ -80,7 +80,9 @@ async function handleRegister() {
   
   loading.value = true
   try {
+    console.log('Attempting to register with username:', form.username)
     const success = await authStore.register(form.username, form.password)
+    console.log('Register result:', success)
     if (success) {
       ElMessage.success('注册成功')
       router.push('/dashboard')
@@ -88,6 +90,8 @@ async function handleRegister() {
       ElMessage.error('注册失败，用户名可能已存在')
     }
   } catch (error) {
+    console.error('注册失败，详细错误:', error)
+    console.error('错误响应:', error.response)
     ElMessage.error('注册失败，请稍后重试')
   } finally {
     loading.value = false

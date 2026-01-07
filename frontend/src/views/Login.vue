@@ -42,14 +42,14 @@ const authStore = useAuthStore()
 const formRef = ref()
 const loading = ref(false)
 
-const form = reactive({
+const form = ref({
   username: '',
   password: '',
 })
 
 const rules = {
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+  username: [{ required: true, message: '请输入用户名', trigger: 'change' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'change' }],
 }
 
 async function handleLogin() {

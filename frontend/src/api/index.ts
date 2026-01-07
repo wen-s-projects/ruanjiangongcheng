@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useAuthStore } from '@/stores/auth'
 
 const api = axios.create({
   baseURL: '/api',
@@ -11,9 +10,9 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const authStore = useAuthStore()
-    if (authStore.accessToken) {
-      config.headers.Authorization = `Bearer ${authStore.accessToken}`
+    const token = localStorage.getItem('access_token')
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
     }
     return config
   },
@@ -29,10 +28,24 @@ api.interceptors.response.use(
 
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true
-      const authStore = useAuthStore()
       
-      if (await authStore.refreshAccessToken()) {
-        return api(originalRequest)
+      const refreshToken = localStorage.getItem('refresh_token')
+      if (refreshToken) {
+        try {
+          const response = await api.post('/auth/refresh/', {
+            refresh_token: refreshToken,
+          })
+          const tokens = response.data
+          
+          localStorage.setItem('access_token', tokens.access_token)
+          localStorage.setItem('refresh_token', tokens.refresh_token)
+          
+          originalRequest.headers.Authorization = `Bearer ${tokens.access_token}`
+          return api(originalRequest)
+        } catch (refreshError) {
+          localStorage.removeItem('access_token')
+          localStorage.removeItem('refresh_token')
+        }
       }
     }
 

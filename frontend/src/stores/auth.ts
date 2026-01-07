@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import axios from 'axios'
+import api from '@/api'
 
 interface User {
   id: number
@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function login(username: string, password: string) {
     try {
-      const response = await axios.post('/api/auth/login/', { username, password })
+      const response = await api.post('/auth/login/', { username, password })
       const { user: userData, tokens } = response.data
       
       user.value = userData
@@ -38,7 +38,10 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function register(username: string, password: string) {
     try {
-      const response = await axios.post('/api/auth/register/', { username, password })
+      console.log('Register API call:', { username, password })
+      const response = await api.post('/auth/register/', { username, password })
+      console.log('Register response:', response.data, response.status)
+      
       const { user: userData, tokens } = response.data
       
       user.value = userData
@@ -48,9 +51,12 @@ export const useAuthStore = defineStore('auth', () => {
       localStorage.setItem('access_token', tokens.access_token)
       localStorage.setItem('refresh_token', tokens.refresh_token)
       
+      console.log('Register successful')
       return true
-    } catch (error) {
+    } catch (error: any) {
       console.error('注册失败:', error)
+      console.error('Error response:', error.response)
+      console.error('Error message:', error.message)
       return false
     }
   }
@@ -66,7 +72,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function refreshAccessToken() {
     try {
-      const response = await axios.post('/api/auth/refresh/', {
+      const response = await api.post('/auth/refresh/', {
         refresh_token: refreshToken.value,
       })
       const tokens = response.data

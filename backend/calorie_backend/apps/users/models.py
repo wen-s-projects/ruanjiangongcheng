@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -16,10 +17,10 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(username, password, **extra_fields)
 
-
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, unique=True, verbose_name='用户名')
     password = models.CharField(max_length=255, verbose_name='密码')
+    last_login = models.DateTimeField(null=True, blank=True, verbose_name='最后登录时间')
     photo = models.CharField(max_length=255, null=True, blank=True, verbose_name='头像')
     background = models.CharField(max_length=255, null=True, blank=True, verbose_name='背景图')
     introduction = models.TextField(null=True, blank=True, verbose_name='个人简介')

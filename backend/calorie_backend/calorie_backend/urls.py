@@ -18,15 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import JsonResponse
+from .views import home
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('api/auth/', include('apps.auth.urls')),
     path('api/', include('apps.users.urls')),
     path('api/', include('apps.articles.urls')),
     path('api/', include('apps.uploads.urls')),
     path('api/markdown/', include('apps.markdown.urls')),
-    path('health/', lambda request: {'ok': True}),
+    path('health/', lambda request: JsonResponse({'ok': True})),
 ]
 
 if settings.DEBUG:

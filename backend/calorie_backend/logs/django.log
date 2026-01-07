@@ -1,0 +1,784 @@
+INFO 2026-01-06 16:21:12,977 autoreload 21736 6484 Watching for file changes with StatReloader
+INFO 2026-01-06 16:21:57,958 autoreload 21876 30636 Watching for file changes with StatReloader
+WARNING 2026-01-06 16:22:27,996 log 21736 20376 Forbidden: /api/
+WARNING 2026-01-06 16:22:27,999 basehttp 21736 20376 "GET /api/ HTTP/1.1" 403 43
+ERROR 2026-01-06 16:23:35,250 log 21736 33520 Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'last_login' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 43, in register
+    user = serializer.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\serializers.py", line 20, in create
+    user.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.OperationalError: (1054, "Unknown column 'last_login' in 'field list'")
+ERROR 2026-01-06 16:23:35,261 basehttp 21736 33520 "POST /api/auth/register/ HTTP/1.1" 500 268987
+INFO 2026-01-06 16:24:45,892 autoreload 32444 17892 Watching for file changes with StatReloader
+ERROR 2026-01-06 16:25:08,470 log 21736 22576 Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'last_login' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 43, in register
+    user = serializer.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\serializers.py", line 20, in create
+    user.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.OperationalError: (1054, "Unknown column 'last_login' in 'field list'")
+ERROR 2026-01-06 16:25:08,478 basehttp 21736 22576 "POST /api/auth/register/ HTTP/1.1" 500 268987
+INFO 2026-01-06 16:26:23,120 autoreload 29424 37092 Watching for file changes with StatReloader
+ERROR 2026-01-06 16:26:47,334 log 21876 37164 Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'last_login' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 43, in register
+    user = serializer.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\serializers.py", line 20, in create
+    user.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.OperationalError: (1054, "Unknown column 'last_login' in 'field list'")
+ERROR 2026-01-06 16:26:47,343 basehttp 21876 37164 "POST /api/auth/register/ HTTP/1.1" 500 268987
+INFO 2026-01-06 16:27:33,188 autoreload 2568 33716 Watching for file changes with StatReloader
+ERROR 2026-01-06 16:28:24,307 log 2568 36076 Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'last_login' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 43, in register
+    user = serializer.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\serializers.py", line 20, in create
+    user.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.OperationalError: (1054, "Unknown column 'last_login' in 'field list'")
+ERROR 2026-01-06 16:28:24,319 basehttp 2568 36076 "POST /api/auth/register/ HTTP/1.1" 500 268987
+INFO 2026-01-06 16:29:43,016 autoreload 2568 33716 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\users\models.py changed, reloading.
+INFO 2026-01-06 16:29:43,353 autoreload 21876 30636 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\users\models.py changed, reloading.
+INFO 2026-01-06 16:29:43,925 autoreload 29424 37092 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\users\models.py changed, reloading.
+INFO 2026-01-06 16:29:44,043 autoreload 26792 34100 Watching for file changes with StatReloader
+INFO 2026-01-06 16:29:44,399 autoreload 29828 17568 Watching for file changes with StatReloader
+INFO 2026-01-06 16:29:44,984 autoreload 16560 23680 Watching for file changes with StatReloader
+INFO 2026-01-06 16:30:26,271 autoreload 20664 32700 Watching for file changes with StatReloader
+ERROR 2026-01-06 16:30:52,323 log 20664 25272 Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'is_superuser' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 43, in register
+    user = serializer.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\serializers.py", line 20, in create
+    user.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.OperationalError: (1054, "Unknown column 'is_superuser' in 'field list'")
+ERROR 2026-01-06 16:30:52,333 basehttp 20664 25272 "POST /api/auth/register/ HTTP/1.1" 500 269017
+ERROR 2026-01-06 16:32:16,583 log 20664 32788 Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'password' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py", line 43, in register
+    user = serializer.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+  File "C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\serializers.py", line 20, in create
+    user.save()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\django\db\backends\mysql\base.py", line 75, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 153, in execute
+    result = self._query(query)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\cursors.py", line 322, in _query
+    conn.query(q)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 826, in _read_query_result
+    result.read()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Users\wxxoxxw\AppData\Roaming\Python\Python39\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.OperationalError: (1054, "Unknown column 'password' in 'field list'")
+ERROR 2026-01-06 16:32:16,591 basehttp 20664 32788 "POST /api/auth/register/ HTTP/1.1" 500 268949
+INFO 2026-01-06 16:34:41,251 basehttp 20664 35408 "POST /api/auth/register/ HTTP/1.1" 201 404
+WARNING 2026-01-06 16:36:04,869 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:36:04,870 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+WARNING 2026-01-06 16:36:04,995 log 29828 29636 Not Found: /favicon.ico
+WARNING 2026-01-06 16:36:04,995 basehttp 29828 29636 "GET /favicon.ico HTTP/1.1" 404 3013
+WARNING 2026-01-06 16:37:11,498 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:37:11,499 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+WARNING 2026-01-06 16:37:12,549 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:37:12,549 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+WARNING 2026-01-06 16:37:12,722 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:37:12,723 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+WARNING 2026-01-06 16:37:12,994 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:37:12,996 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+WARNING 2026-01-06 16:37:13,119 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:37:13,120 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+WARNING 2026-01-06 16:37:13,348 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:37:13,348 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+WARNING 2026-01-06 16:37:13,442 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:37:13,442 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+WARNING 2026-01-06 16:37:13,700 log 29828 29636 Not Found: /
+WARNING 2026-01-06 16:37:13,701 basehttp 29828 29636 "GET / HTTP/1.1" 404 2962
+INFO 2026-01-06 16:37:30,914 autoreload 16560 23680 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\run_django_server.py changed, reloading.
+INFO 2026-01-06 16:37:31,494 autoreload 29828 17568 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\run_django_server.py changed, reloading.
+INFO 2026-01-06 16:37:31,988 autoreload 26944 14248 Watching for file changes with StatReloader
+INFO 2026-01-06 16:37:32,582 autoreload 20912 11456 Watching for file changes with StatReloader
+INFO 2026-01-06 16:41:10,149 autoreload 20664 32700 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\urls.py changed, reloading.
+INFO 2026-01-06 16:41:10,175 autoreload 20912 11456 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\urls.py changed, reloading.
+INFO 2026-01-06 16:41:10,468 autoreload 26944 14248 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\urls.py changed, reloading.
+INFO 2026-01-06 16:41:11,254 autoreload 15292 16400 Watching for file changes with StatReloader
+INFO 2026-01-06 16:41:11,255 autoreload 25732 24304 Watching for file changes with StatReloader
+INFO 2026-01-06 16:41:11,512 autoreload 33208 2052 Watching for file changes with StatReloader
+INFO 2026-01-06 16:41:27,456 autoreload 15292 16400 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\urls.py changed, reloading.
+INFO 2026-01-06 16:41:27,473 autoreload 25732 24304 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\urls.py changed, reloading.
+INFO 2026-01-06 16:41:27,598 autoreload 33208 2052 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\urls.py changed, reloading.
+INFO 2026-01-06 16:41:28,583 autoreload 22736 31016 Watching for file changes with StatReloader
+INFO 2026-01-06 16:41:28,585 autoreload 18604 11980 Watching for file changes with StatReloader
+INFO 2026-01-06 16:41:28,693 autoreload 10236 21292 Watching for file changes with StatReloader
+INFO 2026-01-06 16:44:32,360 basehttp 22736 2592 "GET / HTTP/1.1" 200 290
+INFO 2026-01-06 16:45:36,994 autoreload 20008 30256 Watching for file changes with StatReloader
+INFO 2026-01-06 16:46:17,606 basehttp 20008 9568 "GET / HTTP/1.1" 200 290
+INFO 2026-01-06 16:47:57,700 autoreload 22020 19556 Watching for file changes with StatReloader
+INFO 2026-01-06 16:48:09,624 basehttp 20008 35408 "GET / HTTP/1.1" 200 290
+WARNING 2026-01-06 16:48:09,692 log 20008 35408 Not Found: /favicon.ico
+WARNING 2026-01-06 16:48:09,693 basehttp 20008 35408 "GET /favicon.ico HTTP/1.1" 404 3126
+WARNING 2026-01-06 16:50:05,721 log 20008 21228 Not Found: /favicon.ico
+WARNING 2026-01-06 16:50:05,723 basehttp 20008 21228 "GET /favicon.ico HTTP/1.1" 404 3126
+INFO 2026-01-06 16:53:49,065 basehttp 20008 26124 "POST /api/auth/register/ HTTP/1.1" 201 407
+INFO 2026-01-06 17:09:16,464 autoreload 28572 13404 Watching for file changes with StatReloader
+INFO 2026-01-06 17:10:24,887 basehttp 28572 34772 "GET / HTTP/1.1" 200 290
+INFO 2026-01-06 17:12:51,325 autoreload 3968 14076 Watching for file changes with StatReloader
+INFO 2026-01-06 17:13:40,906 basehttp 28572 30776 "GET / HTTP/1.1" 200 290
+WARNING 2026-01-06 17:13:40,981 log 28572 30776 Not Found: /favicon.ico
+WARNING 2026-01-06 17:13:40,981 basehttp 28572 30776 "GET /favicon.ico HTTP/1.1" 404 3126
+INFO 2026-01-06 17:14:20,669 basehttp 28572 28908 "GET /?ide_webview_request_time=1767690860348 HTTP/1.1" 200 290
+WARNING 2026-01-06 17:14:20,794 log 28572 28908 Not Found: /@vite/client
+WARNING 2026-01-06 17:14:20,794 basehttp 28572 28908 "GET /@vite/client HTTP/1.1" 404 3129
+INFO 2026-01-06 17:20:09,767 autoreload 13000 10668 Watching for file changes with StatReloader
+INFO 2026-01-06 17:20:53,198 basehttp 3968 26264 "POST /api/auth/register/ HTTP/1.1" 201 409
+INFO 2026-01-06 17:23:25,050 autoreload 28904 13908 Watching for file changes with StatReloader
+INFO 2026-01-06 17:23:57,297 basehttp 28904 36372 "GET /?ide_webview_request_time=1767690860348 HTTP/1.1" 200 290
+WARNING 2026-01-06 17:23:57,424 log 28904 36372 Not Found: /@vite/client
+WARNING 2026-01-06 17:23:57,424 basehttp 28904 36372 "GET /@vite/client HTTP/1.1" 404 3129
+INFO 2026-01-06 17:23:58,505 basehttp 28904 36372 "GET /?ide_webview_request_time=1767690860348 HTTP/1.1" 200 290
+WARNING 2026-01-06 17:23:58,554 log 28904 36372 Not Found: /@vite/client
+WARNING 2026-01-06 17:23:58,555 basehttp 28904 36372 "GET /@vite/client HTTP/1.1" 404 3129
+INFO 2026-01-06 17:23:59,052 basehttp 28904 36372 "GET /?ide_webview_request_time=1767690860348 HTTP/1.1" 200 290
+WARNING 2026-01-06 17:23:59,100 log 28904 36372 Not Found: /@vite/client
+WARNING 2026-01-06 17:23:59,101 basehttp 28904 36372 "GET /@vite/client HTTP/1.1" 404 3129
+INFO 2026-01-06 17:23:59,167 basehttp 28904 36372 "GET /?ide_webview_request_time=1767690860348 HTTP/1.1" 200 290
+WARNING 2026-01-06 17:23:59,221 log 28904 36372 Not Found: /@vite/client
+WARNING 2026-01-06 17:23:59,223 basehttp 28904 36372 "GET /@vite/client HTTP/1.1" 404 3129
+INFO 2026-01-06 17:28:31,231 basehttp 28904 27508 "POST /api/auth/register/ HTTP/1.1" 201 418
+INFO 2026-01-06 17:35:11,060 autoreload 13000 36800 Watching for file changes with StatReloader
+INFO 2026-01-06 17:36:15,175 autoreload 31972 36060 Watching for file changes with StatReloader
+INFO 2026-01-06 17:39:54,073 autoreload 32504 16400 Watching for file changes with StatReloader
+INFO 2026-01-06 17:41:06,469 autoreload 37320 36192 Watching for file changes with StatReloader
+INFO 2026-01-06 17:41:24,519 basehttp 37320 6300 "POST /api/auth/register/ HTTP/1.1" 201 418
+INFO 2026-01-07 09:09:19,540 autoreload 21544 34140 Watching for file changes with StatReloader
+INFO 2026-01-07 09:09:32,236 basehttp 21544 19928 "GET / HTTP/1.1" 200 290
+WARNING 2026-01-07 09:09:32,313 log 21544 19928 Not Found: /favicon.ico
+WARNING 2026-01-07 09:09:32,314 basehttp 21544 19928 "GET /favicon.ico HTTP/1.1" 404 3126
+INFO 2026-01-07 09:35:53,791 autoreload 23236 21256 Watching for file changes with StatReloader
+INFO 2026-01-07 09:36:27,891 autoreload 6804 8196 Watching for file changes with StatReloader
+INFO 2026-01-07 09:37:26,094 autoreload 16492 29996 Watching for file changes with StatReloader
+INFO 2026-01-07 09:38:29,008 autoreload 9332 11776 Watching for file changes with StatReloader
+INFO 2026-01-07 09:39:37,338 autoreload 16492 29996 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\settings.py changed, reloading.
+INFO 2026-01-07 09:39:38,152 autoreload 26596 8756 Watching for file changes with StatReloader
+INFO 2026-01-07 09:39:46,519 autoreload 37448 17396 Watching for file changes with StatReloader
+INFO 2026-01-07 09:40:31,399 autoreload 22760 35908 Watching for file changes with StatReloader
+INFO 2026-01-07 09:41:09,733 autoreload 32680 4984 Watching for file changes with StatReloader
+INFO 2026-01-07 09:41:34,619 basehttp 32680 33376 - Broken pipe from ('127.0.0.1', 63206)
+WARNING 2026-01-07 09:41:58,579 log 32680 8324 Bad Request: /api/auth/register/
+WARNING 2026-01-07 09:41:58,580 log 32680 8324 "POST /api/auth/register/ HTTP/1.1" 400 76
+INFO 2026-01-07 09:41:58,868 basehttp 32680 8324 - Broken pipe from ('127.0.0.1', 51226)
+WARNING 2026-01-07 09:42:50,983 log 32680 16856 Bad Request: /api/auth/register/
+WARNING 2026-01-07 09:42:50,985 log 32680 16856 "POST /api/auth/register/ HTTP/1.1" 400 57
+INFO 2026-01-07 09:43:13,983 log 32680 12680 "POST /api/auth/register/ HTTP/1.1" 201 411
+INFO 2026-01-07 09:46:43,079 autoreload 7476 11024 Watching for file changes with StatReloader
+WARNING 2026-01-07 09:47:09,278 log 32680 12940 Bad Request: /api/auth/register/
+WARNING 2026-01-07 09:47:09,279 log 32680 12940 "POST /api/auth/register/ HTTP/1.1" 400 57
+WARNING 2026-01-07 09:47:27,183 log 32680 17824 Bad Request: /api/auth/register/
+WARNING 2026-01-07 09:47:27,185 log 32680 17824 "POST /api/auth/register/ HTTP/1.1" 400 57
+INFO 2026-01-07 09:47:51,785 log 32680 19008 "POST /api/auth/register/ HTTP/1.1" 201 411
+INFO 2026-01-07 09:49:43,696 autoreload 13068 36964 Watching for file changes with StatReloader
+WARNING 2026-01-07 09:56:02,812 log 32680 4244 Bad Request: /api/auth/register/
+WARNING 2026-01-07 09:56:02,812 log 32680 4244 "POST /api/auth/register/ HTTP/1.1" 400 57
+INFO 2026-01-07 09:56:05,770 log 32680 20948 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 09:56:08,722 log 32680 9560 "POST /api/auth/register/ HTTP/1.1" 201 426
+INFO 2026-01-07 09:56:11,690 log 32680 12520 "POST /api/auth/login/ HTTP/1.1" 200 426
+INFO 2026-01-07 09:56:50,898 log 32680 17616 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 09:57:34,351 log 32680 32072 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 09:58:22,235 log 32680 37460 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 09:59:00,907 log 32680 23432 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 09:59:28,091 log 32680 12880 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:02:11,325 autoreload 10152 17680 Watching for file changes with StatReloader
+WARNING 2026-01-07 10:02:32,090 log 32680 31120 Bad Request: /api/auth/register/
+WARNING 2026-01-07 10:02:32,090 log 32680 31120 "POST /api/auth/register/ HTTP/1.1" 400 57
+INFO 2026-01-07 10:02:35,061 log 32680 13292 "POST /api/auth/login/ HTTP/1.1" 200 393
+WARNING 2026-01-07 10:02:37,095 log 32680 35028 Bad Request: /api/auth/register/
+WARNING 2026-01-07 10:02:37,096 log 32680 35028 "POST /api/auth/register/ HTTP/1.1" 400 57
+INFO 2026-01-07 10:02:40,063 log 32680 31836 "POST /api/auth/login/ HTTP/1.1" 200 426
+INFO 2026-01-07 10:02:52,382 autoreload 18768 23680 Watching for file changes with StatReloader
+INFO 2026-01-07 10:03:00,852 log 32680 25212 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:03:37,991 log 32680 37780 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:04:52,907 log 32680 24832 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:05:34,826 log 32680 11136 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:06:03,578 autoreload 16656 10940 Watching for file changes with StatReloader
+INFO 2026-01-07 10:07:27,846 log 10152 34624 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:07:51,812 autoreload 36928 31376 Watching for file changes with StatReloader
+INFO 2026-01-07 10:08:32,143 log 36928 15344 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:08:59,845 log 36928 4376 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:09:33,504 autoreload 22160 20620 Watching for file changes with StatReloader
+INFO 2026-01-07 10:10:04,172 autoreload 5108 27188 Watching for file changes with StatReloader
+INFO 2026-01-07 10:10:25,805 log 36928 30140 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:11:10,487 log 36928 10068 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:12:06,345 log 36928 22376 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:13:35,585 log 22160 11216 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:19:04,285 autoreload 5108 27188 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\views.py changed, reloading.
+INFO 2026-01-07 10:19:04,702 autoreload 18768 23680 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\apps\auth\apps.py changed, reloading.
+INFO 2026-01-07 10:19:04,858 autoreload 22160 20620 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\views.py changed, reloading.
+INFO 2026-01-07 10:19:05,735 autoreload 21652 33724 Watching for file changes with StatReloader
+INFO 2026-01-07 10:19:05,841 autoreload 17776 3868 Watching for file changes with StatReloader
+INFO 2026-01-07 10:19:06,070 autoreload 25316 32300 Watching for file changes with StatReloader
+INFO 2026-01-07 10:26:54,231 log 21652 29704 "GET /health/ HTTP/1.1" 200 12
+INFO 2026-01-07 10:26:57,187 log 21652 1976 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:29:07,376 log 21652 26636 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:31:16,019 autoreload 2380 20164 Watching for file changes with StatReloader
+INFO 2026-01-07 10:32:32,767 autoreload 3900 4988 Watching for file changes with StatReloader
+INFO 2026-01-07 10:39:40,348 autoreload 23744 18064 Watching for file changes with StatReloader
+INFO 2026-01-07 10:40:08,282 log 2380 4208 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:40:44,099 autoreload 20832 35500 Watching for file changes with StatReloader
+INFO 2026-01-07 10:42:02,319 autoreload 30672 25564 Watching for file changes with StatReloader
+INFO 2026-01-07 10:44:45,605 autoreload 9868 31268 Watching for file changes with StatReloader
+INFO 2026-01-07 10:45:11,413 autoreload 36484 26476 Watching for file changes with StatReloader
+INFO 2026-01-07 10:48:06,176 log 30672 24000 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 10:49:14,634 autoreload 30468 30804 Watching for file changes with StatReloader
+INFO 2026-01-07 10:50:11,123 autoreload 12708 28500 Watching for file changes with StatReloader
+INFO 2026-01-07 10:50:36,374 autoreload 1036 32744 Watching for file changes with StatReloader
+INFO 2026-01-07 10:57:58,690 autoreload 37356 22044 Watching for file changes with StatReloader
+INFO 2026-01-07 10:59:21,346 autoreload 34008 36256 Watching for file changes with StatReloader
+INFO 2026-01-07 11:00:34,639 autoreload 28760 27888 Watching for file changes with StatReloader
+INFO 2026-01-07 11:00:58,665 autoreload 30468 30804 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\settings.py changed, reloading.
+INFO 2026-01-07 11:00:59,236 autoreload 28760 27888 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\settings.py changed, reloading.
+INFO 2026-01-07 11:00:59,515 autoreload 37356 22044 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\settings.py changed, reloading.
+INFO 2026-01-07 11:00:59,543 autoreload 30476 22316 Watching for file changes with StatReloader
+INFO 2026-01-07 11:00:59,543 autoreload 1036 32744 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\settings.py changed, reloading.
+INFO 2026-01-07 11:00:59,557 autoreload 12708 28500 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\settings.py changed, reloading.
+INFO 2026-01-07 11:00:59,607 autoreload 34008 36256 C:\Users\wxxoxxw\ruanjiangongcheng\backend\calorie_backend\calorie_backend\settings.py changed, reloading.
+INFO 2026-01-07 11:01:00,187 autoreload 33968 15324 Watching for file changes with StatReloader
+INFO 2026-01-07 11:01:00,507 autoreload 19828 19928 Watching for file changes with StatReloader
+INFO 2026-01-07 11:01:00,521 autoreload 14288 28480 Watching for file changes with StatReloader
+INFO 2026-01-07 11:01:00,580 autoreload 23768 19692 Watching for file changes with StatReloader
+INFO 2026-01-07 11:01:00,591 autoreload 37104 11220 Watching for file changes with StatReloader
+INFO 2026-01-07 11:01:24,338 autoreload 34052 21632 Watching for file changes with StatReloader
+INFO 2026-01-07 11:02:07,307 log 33968 896 "POST /api/auth/login/ HTTP/1.1" 200 393
+INFO 2026-01-07 11:03:13,737 autoreload 21176 28488 Watching for file changes with StatReloader

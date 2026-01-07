@@ -10,12 +10,30 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5173,
+    port: 5179,
+    host: true,
+    hmr: {
+      overlay: false
+    },
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'http://localhost:8001',
         changeOrigin: true,
+        secure: false,
+        configure: (proxy, options) => {
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            console.log('Proxying request:', req.method, req.url);
+          });
+          proxy.on('proxyRes', (proxyRes, req, res) => {
+            console.log('Received response:', proxyRes.statusCode, req.url);
+          });
+        },
       },
     },
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
   },
 })
